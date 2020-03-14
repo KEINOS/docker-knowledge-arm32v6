@@ -1,6 +1,6 @@
 # Dockerfile for Knowledge
 
-FROM tomcat:jre8
+FROM tomcat:8.5-jre8-alpine
 
 # ==== dumb-init ====
 RUN apt-get update && \

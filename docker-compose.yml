@@ -1,8 +1,8 @@
 version: '2'
 services:
     app:
-        image: koda/docker-knowledge
-        #build: .
+        image: keinos/docker-knowledge
+        build: .
         volumes:
             - ./volumes/knowledge:/root/.knowledge
         ports:
@@ -11,7 +11,7 @@ services:
         depends_on:
             - "db"
     db:
-        image: postgres:9
+        image: arm32v6/postgres:9-alpine
         environment:
             - POSTGRES_USER=postgres
             - POSTGRES_PASSWORD=admin123
