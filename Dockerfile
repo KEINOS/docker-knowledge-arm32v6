@@ -3,7 +3,9 @@
 FROM tomcat:8.5-jre8-alpine
 
 # ==== dumb-init ====
-RUN apk --no-cache dumb-init
+RUN apk --no-cache add \
+  dumb-init \
+  ca-certificates
 
 # ==== environment ====
 RUN rm -rf /usr/local/tomcat/webapps/ROOT \
