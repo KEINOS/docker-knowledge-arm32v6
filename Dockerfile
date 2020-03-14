@@ -3,9 +3,7 @@
 FROM tomcat:8.5-jre8-alpine
 
 # ==== dumb-init ====
-RUN apt-get update && \
-    apt-get install -y dumb-init && \
-    apt-get clean
+RUN apk --no-cache dumb-init
 
 # ==== environment ====
 RUN rm -rf /usr/local/tomcat/webapps/ROOT \
