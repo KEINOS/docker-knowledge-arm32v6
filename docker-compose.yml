@@ -1,8 +1,8 @@
 version: '2'
 services:
     app:
-        image: keinos/docker-knowledge
         build: .
+        image: keinos/docker-knowledge
         volumes:
             - ./volumes/knowledge:/root/.knowledge
         ports:
