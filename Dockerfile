@@ -13,23 +13,15 @@ ENV \
 RUN \
   mkdir -p /opt && \
   apk add --no-cache \
+    dumb-init \
     openjdk8-jre \
     curl  && \
   curl -jksSL -o /tmp/apache-tomcat.tar.gz http://archive.apache.org/dist/tomcat/tomcat-${TOMCAT_MAJOR}/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz && \
   tar -C /opt -xvzf /tmp/apache-tomcat.tar.gz && \
   ln -s /opt/apache-tomcat-${TOMCAT_VERSION} ${TOMCAT_HOME} && \
   rm -rf ${TOMCAT_HOME}/webapps/* && \
-  apk del curl && \
   rm -rf /tmp/* /var/cache/apk/* && \
   ${TOMCAT_HOME}/bin/catalina.sh version
-
-# ==== dumb-init ====
-RUN apk add --no-cache \
-  dumb-init \
-  ca-certificates
-
-# ==== environment ====
-RUN update-ca-certificates -f
 
 # ==== add Knowledge ====
 ADD https://github.com/support-project/knowledge/releases/download/v1.13.1/knowledge.war \
